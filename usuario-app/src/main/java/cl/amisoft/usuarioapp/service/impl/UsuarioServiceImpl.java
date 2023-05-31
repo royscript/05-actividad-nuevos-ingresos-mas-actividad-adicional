@@ -40,6 +40,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                     .codConcepto(usuarios.get().getCodConcepto())
                     .rut(usuarios.get().getRut())
                     .rutDiv(usuarios.get().getRutDiv())
+                    .concepto(usuarios.get().getConcepto())
                     .build();
         }
         return new UsuariosVo();
@@ -62,6 +63,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                         .codConcepto(u.getCodConcepto())
                         .rut(u.getRut())
                         .rutDiv(u.getRutDiv())
+                        .concepto(u.getConcepto())
                         .build())
                 .collect(Collectors.toList());
     }
@@ -83,6 +85,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                 .codConcepto(usuariosVo.getCodConcepto())
                 .rut(usuariosVo.getRut())
                 .rutDiv(usuariosVo.getRutDiv())
+                .concepto(usuariosVo.getConcepto())
                 .build());
         return new UsuariosVo.Builder()
                 .ccrUsuario(usuario.getCcrUsuario())
@@ -98,6 +101,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                 .codConcepto(usuario.getCodConcepto())
                 .rut(usuario.getRut())
                 .rutDiv(usuario.getRutDiv())
+                .concepto(usuario.getConcepto())
                 .build();
     }
 
@@ -121,6 +125,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                     .codConcepto(usuario.get().getCodConcepto())
                     .rut(usuario.get().getRut())
                     .rutDiv(usuario.get().getRutDiv())
+                    .concepto(usuario.get().getConcepto())
                     .build();
         }
         return null;
@@ -143,6 +148,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                 .codConcepto(usuariosVo.getCodConcepto())
                 .rut(usuariosVo.getRut())
                 .rutDiv(usuariosVo.getRutDiv())
+                .concepto(usuariosVo.getConcepto())
                 .build());
         return new UsuariosVo.Builder()
                 .ccrUsuario(usuario.getCcrUsuario())
@@ -158,6 +164,7 @@ public class UsuarioServiceImpl implements UsuariosService {
                 .codConcepto(usuario.getCodConcepto())
                 .rut(usuario.getRut())
                 .rutDiv(usuario.getRutDiv())
+                .concepto(usuario.getConcepto())
                 .build();
     }
 }

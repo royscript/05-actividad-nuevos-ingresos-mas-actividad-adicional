@@ -1,3 +1,5 @@
+import { Concepto } from "./concepto.model";
+
 export class Usuario {
     ccrUsuario?: number;
     codUsuarioCrea?: number;
@@ -12,6 +14,7 @@ export class Usuario {
     codConcepto?: number;
     rut?: number;
     rutDiv?: string;
+    concepto?: Concepto;
     constructor(obj?: any) {
         this.ccrUsuario = obj && obj.ccrUsuario || null;
         this.codUsuarioCrea = obj && obj.codUsuarioCrea || null;
@@ -26,5 +29,6 @@ export class Usuario {
         this.codConcepto = obj && obj.codConcepto || null;
         this.rut = obj && obj.rut || null;
         this.rutDiv = obj && obj.rutDiv || null;
+        this.concepto = obj && obj.concepto || null;
     }
 }

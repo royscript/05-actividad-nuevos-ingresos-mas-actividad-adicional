@@ -35,6 +35,11 @@ public class Usuarios {
     @Column(name = "RUT_DV")
     private String rutDiv;
 
+    // Relación de clave externa con la tabla TG_CONCEPTO
+    @ManyToOne
+    @JoinColumn(name = "COD_TG_CONCEPTO", referencedColumnName = "COD_CONCEPTO")
+    private Concepto concepto;
+
     public long getCcrUsuario() {
         return ccrUsuario;
     }
@@ -139,6 +144,14 @@ public class Usuarios {
         this.rutDiv = rutDiv;
     }
 
+    public Concepto getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(Concepto concepto) {
+        this.concepto = concepto;
+    }
+
     public Usuarios() {
     }
     public Usuarios(Builder builder){
@@ -155,6 +168,7 @@ public class Usuarios {
         this.codConcepto = builder.codConcepto;
         this.rut = builder.rut;
         this.rutDiv = builder.rutDiv;
+        this.concepto = builder.concepto;
     }
 
     public static class Builder{
@@ -171,6 +185,7 @@ public class Usuarios {
         private Long codConcepto;
         private Long rut;
         private String rutDiv;
+        private Concepto concepto;
 
         public Builder ccrUsuario(long ccrUsuario) {
             this.ccrUsuario = ccrUsuario;
@@ -236,6 +251,12 @@ public class Usuarios {
             this.rutDiv = rutDiv;
             return this;
         }
+
+        public Builder concepto(Concepto concepto) {
+            this.concepto = concepto;
+            return this;
+        }
+
         public Usuarios build(){
             return new Usuarios(this);
         }

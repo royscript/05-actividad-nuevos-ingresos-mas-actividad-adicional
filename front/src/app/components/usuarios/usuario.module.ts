@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { ConceptoComponent } from '../concepto/concepto.component';
+import { NgSelectModule } from '@ng-select/ng-select';
 @NgModule({
   declarations: [ListarComponent, AgregarComponent, ConceptoComponent],
   imports: [
@@ -18,6 +19,7 @@ import { ConceptoComponent } from '../concepto/concepto.component';
     FormsModule, // Formularios
     NgbModule,
     ReactiveFormsModule, // Formularios reactivos
+    NgSelectModule //ng-Select
   ]
 })
 export class UsuarioModule { }

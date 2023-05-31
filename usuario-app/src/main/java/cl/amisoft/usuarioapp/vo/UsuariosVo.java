@@ -1,6 +1,8 @@
 package cl.amisoft.usuarioapp.vo;
 
 
+import cl.amisoft.usuarioapp.models.Concepto;
+
 import java.time.LocalDate;
 
 public class UsuariosVo {
@@ -17,6 +19,7 @@ public class UsuariosVo {
     private Long codConcepto;
     private Long rut;
     private String rutDiv;
+    private Concepto concepto;
 
     public long getCcrUsuario() {
         return ccrUsuario;
@@ -122,6 +125,14 @@ public class UsuariosVo {
         this.rutDiv = rutDiv;
     }
 
+    public Concepto getConcepto() {
+        return concepto;
+    }
+
+    public void setConcepto(Concepto concepto) {
+        this.concepto = concepto;
+    }
+
     public UsuariosVo() {
     }
     public UsuariosVo(Builder builder){
@@ -138,6 +149,7 @@ public class UsuariosVo {
         this.codConcepto = builder.codConcepto;
         this.rut = builder.rut;
         this.rutDiv = builder.rutDiv;
+        this.concepto = builder.concepto;
     }
 
     public static class Builder{
@@ -154,6 +166,7 @@ public class UsuariosVo {
         private Long codConcepto;
         private Long rut;
         private String rutDiv;
+        private Concepto concepto;
 
         public Builder ccrUsuario(long ccrUsuario) {
             this.ccrUsuario = ccrUsuario;
@@ -219,6 +232,12 @@ public class UsuariosVo {
             this.rutDiv = rutDiv;
             return this;
         }
+
+        public Builder concepto(Concepto concepto) {
+            this.concepto = concepto;
+            return this;
+        }
+
         public UsuariosVo build(){
             return new UsuariosVo(this);
         }

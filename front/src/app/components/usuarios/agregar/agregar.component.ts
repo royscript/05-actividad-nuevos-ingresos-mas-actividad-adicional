@@ -13,32 +13,30 @@ export class AgregarComponent implements OnInit {
   usuarioEditar?: Usuario;
   usuario?: Usuario;
   nombreBoton = 'Agregar';
-  // ----------Definicion del formulario y validaciones
-  usuarioForm = this.fb.group({
-    glsUsername : [this.usuario && this.usuario.glsUsername || null, [Validators.required, Validators.minLength(7)]],
-    rut : [this.usuario && this.usuario.rut || null, [Validators.required, Validators.minLength(7)]],
-    rutDiv : [this.usuario && this.usuario.rutDiv || null, [Validators.required, Validators.minLength(1)]]
-  });
+  usuarioForm?: FormGroup;
 
   constructor(
     private fb: FormBuilder,
     private usuarioService: UsuarioService,
     private router: Router
   ) {
-
+    // ----------Definicion del formulario y validaciones
+    this.usuarioForm = this.fb.group({
+      glsUsername : [this.usuario && this.usuario.glsUsername || null, [Validators.required, Validators.minLength(7)]],
+      rut : [this.usuario && this.usuario.rut || null, [Validators.required, Validators.minLength(7)]],
+      rutDiv : [this.usuario && this.usuario.rutDiv || null, [Validators.required, Validators.minLength(1)]],
+      concepto : [this.usuario && this.usuario.concepto || null, [Validators.required]]
+    });
   }
   ngOnInit(): void {
     this.usuarioEditar = history.state.usuario; /* Recepcionamos los datos del usuario en caso de editar */
     if (typeof this.usuarioEditar !== 'undefined') {/* Si se encuentra la causa con datos */
       this.usuarioForm.patchValue({/* Asignamos al campo del formulario */
-          glsUsername: this.usuarioEditar.glsUsername
-      });
-      this.usuarioForm.patchValue({/* Asignamos al campo del formulario */
-          rut: this.usuarioEditar.rut
-      });
-      this.usuarioForm.patchValue({/* Asignamos al campo del formulario */
-          rutDiv: this.usuarioEditar.rutDiv
-      });
+          glsUsername: this.usuarioEditar.glsUsername,
+          rut: this.usuarioEditar.rut,
+          rutDiv: this.usuarioEditar.rutDiv,
+          concepto: this.usuarioEditar.concepto
+    });
       this.nombreBoton = 'Editar';
       // Limpiar los valores en el historial de navegación
       history.replaceState({ ...history.state, usuario: null }, '');
@@ -53,6 +51,14 @@ export class AgregarComponent implements OnInit {
   }
   get div() {
     return this.usuarioForm.get('rutDiv') as FormControl;
+  }
+  get concepto() {
+    return this.usuarioForm.get('concepto') as FormControl;
+  }
+  setConcepto(selectedConcepto: any) {
+    this.usuarioForm.patchValue({/* Asignamos al campo del formulario */
+          concepto: selectedConcepto
+    });
   }
   // Metodo submit del formulario
   onSubmit(value: FormGroup) {

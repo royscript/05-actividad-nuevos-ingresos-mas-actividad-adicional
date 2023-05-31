@@ -15,14 +15,4 @@ export class ConceptoService {
   listar(): Observable <Concepto[]> {
     return this.http.get<Concepto[]>(`${this.url}concepto`);
   }
-  agregar(concepto: Concepto): Observable<Concepto> {
-    return this.http.post<Concepto>(`${this.url}concepto`, concepto, this.httpOptions);
-  }
-  editar(concepto: Concepto): Observable<Concepto> {
-    return this.http.put<Concepto>(`${this.url}concepto/${concepto.codConcepto}`, concepto, this.httpOptions);
-  }
-
-  eliminar(concepto: Concepto): Observable<Concepto> {
-    return this.http.delete<Concepto>(`${this.url}concepto/${concepto.codConcepto}`);
-  }
 }

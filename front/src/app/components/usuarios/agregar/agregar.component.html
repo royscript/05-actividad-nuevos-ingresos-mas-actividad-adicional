@@ -38,7 +38,10 @@
               </div>
               <div class="form-group">
                 <label for="username">Concepto</label>
-                <app-concepto></app-concepto>
+                <app-concepto (selectChanged)="setConcepto($event)" [value]="concepto.value"></app-concepto>
+                <span *ngIf="concepto.errors?.required" class="text-danger">
+                  requerido*
+                </span>
               </div>
               <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">{{nombreBoton}}</button>
               <button type="submit" class="btn btn-danger" [routerLink]="['/usuarios/listar']">Cancelar</button>

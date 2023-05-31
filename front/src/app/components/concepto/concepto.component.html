@@ -1,1 +1,4 @@
-<p>concepto works!</p>
+<!--Using ng-option and for loop-->
+<ng-select [(ngModel)]="selectedConcepto" (change)="onChange()">
+    <ng-option *ngFor="let concepto of conceptos" [value]="concepto.codConcepto">{{concepto.glsConcepto}}</ng-option>
+</ng-select>
