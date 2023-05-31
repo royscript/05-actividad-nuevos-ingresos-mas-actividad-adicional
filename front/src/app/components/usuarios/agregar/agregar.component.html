@@ -13,7 +13,7 @@
                 <span *ngIf="userName.errors?.minlength" class="text-danger">
                     El nombre debe tener un minimo de 7 caracteres*
                 </span>
-            </div>
+              </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="rut">RUT</label>
@@ -36,12 +36,14 @@
                 </span>
                 </div>
               </div>
+              <div class="form-group">
+                <label for="username">Concepto</label>
+                <app-concepto></app-concepto>
+              </div>
               <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">{{nombreBoton}}</button>
               <button type="submit" class="btn btn-danger" [routerLink]="['/usuarios/listar']">Cancelar</button>
             </form>
           </div>
-          
-
       </ng-template>
     </ngb-panel>
   </ngb-accordion>

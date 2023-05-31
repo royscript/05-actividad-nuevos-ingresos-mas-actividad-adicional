@@ -7,8 +7,9 @@ import { DataTablesModule } from "angular-datatables";
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { ConceptoComponent } from '../concepto/concepto.component';
 @NgModule({
-  declarations: [ListarComponent, AgregarComponent],
+  declarations: [ListarComponent, AgregarComponent, ConceptoComponent],
   imports: [
     CommonModule,
     RouterModule, // Rutas dinamicas
@@ -16,7 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     HttpClientModule, // Cliente Http
     FormsModule, // Formularios
     NgbModule,
-    ReactiveFormsModule // Formularios reactivos
+    ReactiveFormsModule, // Formularios reactivos
   ]
 })
 export class UsuarioModule { }
