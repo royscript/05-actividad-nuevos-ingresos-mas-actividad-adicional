@@ -1,0 +1,47 @@
+<ngb-accordion #acc="ngbAccordion" activeIds="panel-formulario">
+    <ngb-panel title="Frm Usuario" id="panel-formulario">
+      <ng-template ngbPanelContent>
+        
+        <div class="container">
+            <form [formGroup]="usuarioForm" (ngSubmit)="onSubmit(usuarioForm)">
+              <div class="form-group">
+                <label for="username">Username</label>
+                <input type="text" class="form-control" formControlName="glsUsername" placeholder="Ingresa el nombre de usuario">
+                <span *ngIf="userName.errors?.required" class="text-danger">
+                    Nombre requerido*
+                </span>
+                <span *ngIf="userName.errors?.minlength" class="text-danger">
+                    El nombre debe tener un minimo de 7 caracteres*
+                </span>
+            </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="rut">RUT</label>
+                  <input type="number" class="form-control" formControlName="rut" placeholder="Ingresa el RUT" [max]="7">
+                    <span *ngIf="rut.errors?.required" class="text-danger">
+                        Rut requerido*
+                    </span>
+                    <span *ngIf="rut.errors?.minlength" class="text-danger">
+                        El rut debe tener un minimo de 7 caracteres*
+                    </span>
+                    <span *ngIf="rut.errors?.maxlength" class="text-danger">
+                        El rut debe tener un máximo de 8 caracteres*
+                    </span>
+                </div>
+                <div class="form-group col-md-2">
+                  <label for="div">DIV</label>
+                  <input type="text" class="form-control" formControlName="rutDiv" placeholder="DIV" [max]="1">
+                  <span *ngIf="div.errors?.required" class="text-danger">
+                    requerido*
+                </span>
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="usuarioForm.invalid">{{nombreBoton}}</button>
+              <button type="submit" class="btn btn-danger" [routerLink]="['/usuarios/listar']">Cancelar</button>
+            </form>
+          </div>
+          
+
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
