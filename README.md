@@ -1,5 +1,11 @@
 # 05-actividad-nuevos-ingresos-mas-actividad-adicional
+<br/>
+Video
+https://drive.google.com/file/d/1BVlp841CkdGHt5CAyh9EaRRnLcxmdsoE/view?usp=sharing
+<br/>
 ESQUEMA SQL
+<br/>
+
 ```sql
 
 PS C:\WINDOWS\system32> psql -U postgres -p 5433
