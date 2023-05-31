@@ -81,14 +81,14 @@ export class ListarComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.dtTrigger.unsubscribe();
   }
-  //Metodos
+  // Metodos
   ocultarErrors() {
     /* Se le agrego instancia ya que adentro de setTimeOut this hace referencia a setTimeOut */
     setTimeout(() => {
       this.instanciaActual.error = null;
     }, 3000);
   }
-  ocultarSuccess(){
+  ocultarSuccess() {
     /* Se le agrego instancia ya que adentro de setTimeOut this hace referencia a setTimeOut */
     setTimeout(() => {
       this.instanciaActual.exito = null;
@@ -104,13 +104,13 @@ export class ListarComponent implements OnInit, AfterViewInit, OnDestroy {
           this.ocultarSuccess();
         },
         error => {
-          this.error = `Error al obtener usuarios: ${error}`;
+          this.error = `Error al obtener usuarios: ${JSON.stringify(error)}`;
           this.ocultarErrors();
         }
       );
     }
   }
-  
+
   listarTodos() {
     this.usuarioService.listar().subscribe(
       usuarios => {
@@ -121,7 +121,7 @@ export class ListarComponent implements OnInit, AfterViewInit, OnDestroy {
         this.dtTrigger.next();
       },
       error => {
-        console.log('Error al obtener usuarios:', error);
+        console.log('Error al obtener usuarios:', JSON.stringify(error));
       }
     );
   }

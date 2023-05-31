@@ -1,5 +1,4 @@
-import { AfterContentInit, Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges } from '@angular/core';
-import { FormControl } from '@angular/forms';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Concepto } from 'src/app/models/concepto.model';
 import { ConceptoService } from 'src/app/services/concepto.service';
 
@@ -12,7 +11,6 @@ export class ConceptoComponent implements OnInit {
   @Input() value: any;
   @Output() selectChanged = new EventEmitter<any>();
   conceptos?: Concepto;
-  select = new FormControl();
   selectedConcepto: number[] = [];
 
   constructor(private conceptoService: ConceptoService) { }

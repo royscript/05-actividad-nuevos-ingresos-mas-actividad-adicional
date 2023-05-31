@@ -22,8 +22,11 @@ export class AgregarComponent implements OnInit {
   ) {
     // ----------Definicion del formulario y validaciones
     this.usuarioForm = this.fb.group({
-      glsUsername : [this.usuario && this.usuario.glsUsername || null, [Validators.required, Validators.minLength(7)]],
-      rut : [this.usuario && this.usuario.rut || null, [Validators.required, Validators.minLength(7)]],
+      glsUsername : [
+                      this.usuario && this.usuario.glsUsername || null,
+                      [Validators.required, Validators.minLength(7), Validators.maxLength(30)]
+                    ],
+      rut : [this.usuario && this.usuario.rut || null, [Validators.required, Validators.min(100000), Validators.max(99999999)]],
       rutDiv : [this.usuario && this.usuario.rutDiv || null, [Validators.required, Validators.minLength(1)]],
       concepto : [this.usuario && this.usuario.concepto || null, [Validators.required]]
     });
@@ -36,7 +39,8 @@ export class AgregarComponent implements OnInit {
           rut: this.usuarioEditar.rut,
           rutDiv: this.usuarioEditar.rutDiv,
           concepto: this.usuarioEditar.concepto
-    });
+      });
+      // Cambiamos el boton del formulario a Editar
       this.nombreBoton = 'Editar';
       // Limpiar los valores en el historial de navegación
       history.replaceState({ ...history.state, usuario: null }, '');
@@ -70,14 +74,16 @@ export class AgregarComponent implements OnInit {
   }
   // Metodos de llamado APIS
   agregar(value: FormGroup) {
-    if (value.status === 'VALID'){
+    if (value.status === 'VALID') {
       this.usuarioService.agregar(value.value).subscribe(data => {
         if (data) {
           this.router.navigate(['/usuarios/listar'], { state: { exito: `Usuario agregado correctamente` } });
         }
       },
       error => {
-        this.router.navigate(['/usuarios/listar'], { state: { error: `Ocurrió un error al agregar al usuario: ${error}` } });
+        this.router.navigate(['/usuarios/listar'], {
+                                                    state: { error: `Ocurrió un error al agregar al usuario: ${JSON.stringify(error)}` }
+                                                  });
       });
     }
   }
@@ -91,7 +97,7 @@ export class AgregarComponent implements OnInit {
         }
       },
       error => {
-        this.router.navigate(['/usuarios/listar'], { state: { error: `Ocurrió un error al editar al usuario: ${error}` } });
+        this.router.navigate(['/usuarios/listar'], { state: { error: `Ocurrió un error al editar al usuario: ${JSON.stringify(error)}` } });
       });
     }
   }

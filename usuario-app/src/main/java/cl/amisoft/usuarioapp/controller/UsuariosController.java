@@ -35,7 +35,6 @@ public class UsuariosController {
     }
     @PostMapping()
     public UsuariosVo addUsuario(@RequestBody UsuariosVo usuariosVo){
-        System.out.println(usuariosVo.getRut());
         return usuariosService.agregar(usuariosVo);
     }
     @PutMapping(value = "/{ccrUsuario}")

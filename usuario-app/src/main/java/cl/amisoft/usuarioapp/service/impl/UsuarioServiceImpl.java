@@ -110,7 +110,7 @@ public class UsuarioServiceImpl implements UsuariosService {
     public UsuariosVo eliminar(Long ccrUsuario) {
         Optional<Usuarios> usuario = usuariosDao.obtenerUsuario(ccrUsuario);
         if (usuario.isPresent()) {
-            Usuarios usuario1 = usuariosDao.eliminar(usuario.get());
+            usuariosDao.eliminar(usuario.get());
             return new UsuariosVo.Builder()
                     .ccrUsuario(usuario.get().getCcrUsuario())
                     .codUsuarioCrea(usuario.get().getCodUsuarioCrea())
